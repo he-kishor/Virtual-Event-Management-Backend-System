@@ -6,6 +6,6 @@ register_date:{type:Date,required:true}
 
 });
 
-Registration_e = mongoose.model("event_registration", RegisterSchema)
+const Registration_e = mongoose.model("event_registration", RegisterSchema)
 
 module.exports = Registration_e;
