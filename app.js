@@ -2,7 +2,7 @@ require('dotenv').config();
 const express=require('express');
 const connecDB=require('./Settings/DB/dbconnect');
 const Routes=require('./src/routes');
-const { authenticate,logger } = require('./Settings/middleware/auth_token');
+const { logger } = require('./Settings/middleware/auth_token');
 
 //app start
 const app=express();
