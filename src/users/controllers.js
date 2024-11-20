@@ -1,6 +1,6 @@
 
-const  registerUser = require('./register_user');
-const loginuser = require('./login_user');
+const  registerUser = require('./services/register_user');
+const loginuser = require('./services/login_user');
 const errorHandler = require('../../Settings/errorHandler');
 
 //user register
