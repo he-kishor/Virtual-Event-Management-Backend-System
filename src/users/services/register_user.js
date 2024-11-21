@@ -1,7 +1,7 @@
 require('dotenv').config();
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
-const User = require('../Models/userModel');
+const User = require('../../Models/userModel');
 
 //register user
 const registerUser = async({fname, lname, email, pass, role, gender,birth})=> {

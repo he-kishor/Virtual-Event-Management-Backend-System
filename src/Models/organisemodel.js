@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Event_organisationSchema = new mongoose.Schema({
 e_name:{type:String,required:true},
+e_details:{type:String,required:true},
 event_time:{type:Date, required:true},
 event_add:{type:String,required:true},
 capacity:{type:Number},

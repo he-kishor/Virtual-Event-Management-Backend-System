@@ -12,7 +12,7 @@ const authenticate =(req,res,next)=>{
             return res.status(403).json({message:'Invalid token'});
 
         }
-
+        req.userrole = user.role
         req.userid=user.id;
         next();
     });
@@ -30,6 +30,7 @@ const verifyAccessToken = (req, res, next) => {
         }
 
         req.userId = user.id;  // User ID from access token
+        
         next();
     });
 };

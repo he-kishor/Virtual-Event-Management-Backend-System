@@ -4,7 +4,11 @@ const UserSchema = new mongoose.Schema({
   lname: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   pass: { type: String, required: true },
-  role: { type: String, required: true },
+  role: { 
+    type: String, 
+    required: true,
+    enum: ['admin_user', 'org_user', 'reg_user'], // Only these roles are allowed
+  },
   birth_date:{type:Date,required:true},
   gender: { type: String, required: true },
   passwordChangedAt: { type: Date },  // Field for storing password change timestamp
