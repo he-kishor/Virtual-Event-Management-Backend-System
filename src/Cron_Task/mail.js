@@ -11,14 +11,14 @@ async function sendEmail(data) {
 
   const mailOptions = {
     from: process.env.EMAIL,
-    to: email,
-    subject: `Reminder: ${event.title}`,
-    text: `Dear user, just a reminder for the event "${event.title}" scheduled on ${event.startTime}.`,
+    to: data.email,
+    subject: `Reminder: ${data.event_name}`,
+    text: `Dear ${data.users_name}, just a reminder for the event "${data.event_name}" scheduled on ${data.event_time}.`,
   };
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log(`Email sent to ${email}`);
+    console.log(`Email sent to ${data.email}`);
   } catch (error) {
     console.error("Error sending email:", error);
   }

@@ -4,6 +4,7 @@ const connecDB=require('./Settings/DB/dbconnect');
 const Routes=require('./src/routes');
 const { logger } = require('./Settings/middleware/auth_token');
 const cron = require("node-cron");
+const Scheduke_cron = require('./src/Cron_Task/crone_task');
 //app start
 const app=express();
 
@@ -19,6 +20,21 @@ app.get("/",(req,res)=>{
 //user route
 app.use("/api",Routes);
 const PORT=process.env.PORT;
+const test =async()=>{
+const ts= await Scheduke_cron();
+}
+test();
+app.get("/test",(res,req)=>{
+    test();
+    req.send("cron job is running");
+})
+//crone the job
+cron.schedule('0 15 * * *', async()=>{
+    console.log('Running Cron Job at 3 PM Every Day');
+    const events = await Scheduke_cron();
+
+})
+
 
 //connect db then server will start 
 connecDB().then(()=>{
