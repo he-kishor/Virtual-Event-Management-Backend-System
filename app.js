@@ -20,15 +20,8 @@ app.get("/",(req,res)=>{
 //user route
 app.use("/api",Routes);
 const PORT=process.env.PORT;
-const test =async()=>{
-const ts= await Scheduke_cron();
-}
-test();
-app.get("/test",(res,req)=>{
-    test();
-    req.send("cron job is running");
-})
-//crone the job
+//crone job
+
 cron.schedule('0 15 * * *', async()=>{
     console.log('Running Cron Job at 3 PM Every Day');
     const events = await Scheduke_cron();

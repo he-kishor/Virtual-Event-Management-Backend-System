@@ -19,9 +19,10 @@ try{
     const events = await Event_org.find({event_time:
         {$gte:start.toDate(), $lt:end.toDate()},
     });
-    console.log(events);
+    
     for (const event of events){
         await ProcessEvent(event,emailQueue);
+        console.log("checked");
     }
 
 
