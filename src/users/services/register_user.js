@@ -5,9 +5,13 @@ const User = require('../../Models/userModel');
 
 //register user
 const registerUser = async({fname, lname, email, pass, role, gender,birth})=> {
-    if (!fname || !lname || !email || !role || !birth){
+    if (!fname || !lname || !email || !role || !pass){
         throw({status:400, message:"Please provide all required fields"});
 
+    }
+    user=await User.findOne({email:email});
+    if (user){
+        throw({status:400,message:"User already exits"});
     }
     const genderr = gender || 'NO response'
     const hasedPassword = await bcrypt.hash(pass,10);

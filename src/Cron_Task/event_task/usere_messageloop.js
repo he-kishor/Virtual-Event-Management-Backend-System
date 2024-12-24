@@ -10,15 +10,18 @@ const ProcessEvent=async(event, emailQueue)=>{
         or_id:event._id
     });
     for (const reg of registration){
-        const users = await Users.findById({id:reg.u_id})
-        data={
-            'event_name':event.e_name,
-            'users_name':users.fname,
-            'event_time':event.e_time,
-            'users_email':users.email
-        };
-
-        emailQueue.add({data});
+        const users = await Users.findById(reg.u_id);
+        if (users){
+            data={
+                'event_name':event.e_name,
+                'users_name':users.fname,
+                'event_time':event.e_time,
+                'users_email':users.email
+            };
+    
+            await emailQueue.add({data});
+        }
+        
     }
 
 
