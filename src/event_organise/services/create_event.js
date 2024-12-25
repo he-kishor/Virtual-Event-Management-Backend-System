@@ -4,10 +4,11 @@ const EventOrganiseModel = require('../../Models/organisemodel')
 // create add the user organiser Id in the event 
 
 const CreateEvent =async(user_id, user_role,{e_name,e_details, event_time,event_add,capacity,fees})=>{
-    try{
+    
     if (user_role === "org_user"){
-            console.log(e_name,e_details,event_time,event_add)
-            if (!e_name || !e_details || !event_time || !event_add){
+          
+            
+            if (!e_name.trim() || !e_details.trim() || !event_time.trim() || !event_add.trim()){
                 throw({status:400, message:"Please provide all required fields"});
             }
 
@@ -29,13 +30,11 @@ const CreateEvent =async(user_id, user_role,{e_name,e_details, event_time,event_
             return create_eventResponse;
         }
     else{
+   
         throw({ status: 403, message: "This user doesn't have access to register the Event" });
-   
-    }}
-    catch{
-        throw({ status: 500, message: "Internal issue has been occurs here" });
-   
+        
     }
+
 }; 
 
 module.exports = CreateEvent;
