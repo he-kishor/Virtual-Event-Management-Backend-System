@@ -6,6 +6,9 @@ const jwt = require('jsonwebtoken');
 
 
 const loginuser =async({email,pass})=>{
+    if(!email.trim() || !pass.trim()){
+        throw ({status:400, message:"Please provide all required fields"});
+    }
     const user = await User.findOne({email});
      if(!user){
          throw ({status:400, message:"Invalid EmailID"});
